@@ -19,14 +19,38 @@ element.clear
 element.send_keys 'QA'
 element.submit
 
-wait = Selenium::WebDriver::Wait.new(:timeout => 15)
+# wait = Selenium::WebDriver::Wait.new(:timeout => 15)
 
-#### Check that the table with the given id is displayed
-div = wait.until {
-   element = @driver.find_element(:id, "prime-popover-close-button")
-   element if element.displayed?
-}
-puts "Test Passed: Book Table found" if table
+puts 'about to sleep ....snzzz 5 seconds!'
+sleep 5
+puts 'done sleeping, looking for popup!'
+
+#fj
+# if @driver.find_element(:css, '#fj').displayed?
+if @driver.find_element(:css, '#prime-popover-div').displayed?
+  @driver.find_element(:css, '#prime-popover-close-button').click
+  puts 'I see the popup!!! it\'s closed'
+else
+  puts 'no pop up window!'
+end
+puts "Test Passed: popup closed"
+
+# here's where we start going through the list of jobs
+element = @driver.find_element(:css, '#sja1')
+element.click
+# element.
+
+
+
+# (;css;'#sja1')
+
+# @driver.find_element(:id, "prime-popover-close-button")
+
+# #### Check that the table with the given id is displayed
+# div = wait.until {
+#    element = @driver.find_element(:id, "prime-popover-close-button")
+#    element if element.displayed?
+# }
 
 
 # id="prime-popover-close-button"
